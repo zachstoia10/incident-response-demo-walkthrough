@@ -25,11 +25,20 @@ ul{margin:4px 0;padding-left:22px}footer{color:#59636e;font-size:13px;margin-top
 <div class=wrap>
 <div class=note><b>Please note:</b> The bug in this demo was planted by us on a copy of the public, MIT-licensed <i>gtm-ai-cli</i> repo. It is not a real ZoomInfo incident. Nothing was merged or deployed, and no ZoomInfo system or account was touched.</div>
 
-<h2>What you're looking at</h2>
-<div class=acts>
-<div class=card><b>The incident</b><br>After a release, sales reps keep getting logged out of the GTM command-line tool, worst when they run bulk enrichment jobs in parallel. Support escalates it.</div>
-<div class=card><b>What Devin did</b><br>From one Slack message, Devin found the root cause, explained it in plain English, proved it with new tests, fixed it, and opened a pull request for an engineer to review.</div>
-</div>
+<h2>The situation</h2>
+<div class=card>We set up a fake customer emergency. After an update, sales reps kept getting kicked out of the tool, worst when they ran several bulk data jobs at once. Support raised a ticket that described the symptom only, not the cause.</div>
+
+<h2>What Devin did</h2>
+<div class=card>Someone posted one message in a Slack incident channel and tagged @Devin. Devin replied within 20 seconds and, about 2 minutes later, posted:
+<ul>
+<li><b>The cause:</b> a recent "cleanup" change dropped a "&times; 1000", so a login meant to last 1 hour was saved as lasting 3.6 seconds. Every login looked expired right away, and parallel jobs tripped over each other trying to log back in.</li>
+<li><b>The fix:</b> one line of code.</li>
+<li><b>Proof:</b> 3 new tests that fail with the bug and pass with the fix, so it can't quietly come back.</li>
+<li><b>A proposed change</b> (a "pull request") for an engineer to review. In the same thread it also gave a two-sentence summary for a VP.</li>
+</ul></div>
+
+<h2>Outcome</h2>
+<div class=card>About 2 minutes from Slack message to cause, fix and proposed change. All 151 tests pass, and nothing went live without human approval.</div>
 
 <h2>Results</h2>
 <div class=metrics>
